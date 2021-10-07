@@ -1,0 +1,52 @@
+.sticky_notes {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+ul.sticky_notes {
+  padding-left: 0;
+  margin-top: 10%;
+}
+
+.sticky_note {
+  background-color: rgb(255, 234, 0);
+  width: 20vw;
+  height: 30vh;
+  min-width: 140px;
+  margin-bottom: 25px;
+  box-shadow: 5px 5px 7px rgba(51, 44, 44, 0.7);
+  text-align: center;
+}
+
+.sticky_note:nth-child(2n + 1) {
+  transform: rotate(-5deg);
+}
+
+.sticky_note:nth-child(2n) {
+  transform: rotate(6deg);
+}
+
+.sticky_note:nth-child(3n + 1) {
+  transform: rotate(3deg);
+}
+
+.sticky_note:hover {
+  transform: scale(1.2);
+}
+
+.sticky_note .bottom {
+  position: absolute;
+  bottom: 0;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.sticky_note a {
+  cursor: pointer;
+  text-decoration: none;
+}
