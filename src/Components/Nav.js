@@ -4,11 +4,11 @@ export default function Nav(props) {
   return (
     <nav>
       <ul>
-        <a onClick={() => props.setShowModel(true)}>
+        <a onClick={() => props.setShowCalender(true)}>
           <span className="iconify" data-icon="uil:calender"></span>
           <span>View History</span>
         </a>
-        <a onClick={() => props.setShowModel(true)}>
+        <a onClick={() => props.setShowNew(true)}>
           <span
             className="iconify"
             data-icon="ant-design:file-add-outlined"
