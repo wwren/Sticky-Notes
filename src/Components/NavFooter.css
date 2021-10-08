@@ -30,6 +30,16 @@ nav ul a {
   cursor: pointer;
 }
 
+.text {
+  display: none;
+}
+
+@media screen and (min-width: 900px) {
+  .text {
+    display: inline;
+  }
+}
+
 /* nav ul a:hover {
   border-top: 2px solid white;
 } */

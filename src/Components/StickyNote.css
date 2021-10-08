@@ -1,12 +1,15 @@
-.sticky_notes {
+ul.sticky_notes {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  padding-left: 0;
+  margin: 10% auto;
+  width: 90vw;
 }
 
-ul.sticky_notes {
-  padding-left: 0;
-  margin-top: 10%;
+ul.sticky_notes li {
+  list-style: none;
+  margin-bottom: 25px;
 }
 
 .sticky_note {
@@ -14,24 +17,24 @@ ul.sticky_notes {
   width: 20vw;
   height: 30vh;
   min-width: 140px;
-  margin-bottom: 25px;
+
   box-shadow: 5px 5px 7px rgba(51, 44, 44, 0.7);
   text-align: center;
 }
 
-.sticky_note:nth-child(2n + 1) {
-  transform: rotate(-5deg);
+ul.sticky_notes li:nth-child(2n + 1) {
+  transform: rotate(-2deg);
 }
 
-.sticky_note:nth-child(2n) {
+ul.sticky_notes li:nth-child(2n) {
   transform: rotate(6deg);
 }
 
-.sticky_note:nth-child(3n + 1) {
+ul.sticky_note li:nth-child(3n + 1) {
   transform: rotate(3deg);
 }
 
-.sticky_note:hover {
+.sticky_notes li:hover {
   transform: scale(1.2);
 }
 

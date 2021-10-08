@@ -2,16 +2,14 @@ import React, { useState, useEffect } from "react";
 import Calender from "react-calendar";
 import "./Calender.css";
 
-const MyCalender = () => {
-  const [value, onChange] = useState(new Date());
-
-  useEffect(() => {
-    console.log("value", value);
-  }, [value]);
-
+const MyCalender = ({ selectedDate, setSelectedDate }) => {
   return (
     <div>
-      <Calender onChange={onChange} value={value} />
+      <Calender
+        onChange={setSelectedDate}
+        value={selectedDate}
+        maxDate={new Date()}
+      />
     </div>
   );
 };

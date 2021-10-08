@@ -4,10 +4,22 @@ import Nav from "./Components/Nav";
 import Footer from "./Components/Footer";
 import Overlay from "./Components/Overlay";
 import MyCalender from "./Components/Calender";
+import AddNew from "./Components/AddNew";
 
 function App() {
   const [showCalender, setShowCalender] = useState(false);
   const [showNew, setShowNew] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(undefined);
+  const [newSticker, setNewSticker] = useState(undefined);
+  const [stickers, setStickers] = useState([]);
+
+  useEffect(() => {
+    setSelectedDate(new Date());
+  }, []);
+
+  useEffect(() => {
+    console.log("selectedDate", selectedDate);
+  }, [selectedDate]);
 
   useEffect(() => {
     if (showCalender || showNew) {
@@ -18,30 +30,37 @@ function App() {
     }
   }, [showCalender, showNew]);
 
+  useEffect(() => {
+    if (newSticker !== undefined) {
+      console.log("newSticker", newSticker);
+
+      const newStickers = [...stickers, newSticker];
+
+      setStickers(newStickers);
+
+      console.log("stickers", stickers);
+    }
+  }, [newSticker]);
+
   return (
     <>
       <Overlay showModel={showCalender} setShowModel={setShowCalender}>
-        <MyCalender />
+        <MyCalender
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
+        />
       </Overlay>
-      <Overlay showModel={showNew} setShowModel={setShowNew}></Overlay>
+      <Overlay showModel={showNew} setShowModel={setShowNew}>
+        <AddNew setNewSticker={setNewSticker} />
+      </Overlay>
       <Nav setShowCalender={setShowCalender} setShowNew={setShowNew} />
       <ul className="sticky_notes">
-        <StikyNote
-          title="Hello World 1"
-          paragraph="Want to become a better web dev"
-        />
-        <StikyNote
-          title="Hello World 2"
-          paragraph="Want to become a better web dev"
-        />
-        <StikyNote
-          title="Hello World 3"
-          paragraph="Want to become a better web dev"
-        />
-        <StikyNote
-          title="Hello World 3"
-          paragraph="Want to become a better web dev"
-        />
+        {stickers.length > 0 &&
+          stickers.map((sticker) => (
+            <li key={sticker.createdOn}>
+              <StikyNote title={sticker.title} paragraph={sticker.paragraph} />
+            </li>
+          ))}
       </ul>
       <Footer />
     </>
