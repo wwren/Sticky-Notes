@@ -7,7 +7,7 @@ const Overlay = (props) => {
       className="overlay"
       style={props.showModel ? { display: "block" } : { display: "none" }}
     >
-      <button onClick={() => props.setShowModel(false)}>
+      <button className="close" onClick={() => props.setShowModel(false)}>
         <span
           className="iconify"
           data-icon="ant-design:close-circle-outlined"
