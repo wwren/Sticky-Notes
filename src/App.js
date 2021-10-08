@@ -37,6 +37,7 @@ function App() {
       const newStickers = [...stickers, newSticker];
 
       setStickers(newStickers);
+      setNewSticker(undefined);
 
       console.log("stickers", stickers);
     }
@@ -58,7 +59,11 @@ function App() {
         {stickers.length > 0 &&
           stickers.map((sticker) => (
             <li key={sticker.createdOn}>
-              <StikyNote title={sticker.title} paragraph={sticker.paragraph} />
+              <StikyNote
+                title={sticker.title}
+                paragraph={sticker.paragraph}
+                color={sticker.color}
+              />
             </li>
           ))}
       </ul>

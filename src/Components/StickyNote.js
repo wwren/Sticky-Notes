@@ -1,9 +1,9 @@
 import React from "react";
 import "./StickyNote.css";
 
-const StikyNote = ({ title, paragraph }) => {
+const StikyNote = ({ title, paragraph, color }) => {
   return (
-    <div className="sticky_note">
+    <div className={`sticky_note ${color}`}>
       <h2>{title}</h2>
       <p>{paragraph}</p>
       <div className="bottom">
