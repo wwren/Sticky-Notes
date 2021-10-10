@@ -5,6 +5,7 @@ import Footer from "./Components/Footer";
 import Overlay from "./Components/Overlay";
 import MyCalender from "./Components/Calender";
 import AddNew from "./Components/AddNew";
+import { getOnDate } from "./APIs.js";
 
 function App() {
   const [showCalender, setShowCalender] = useState(false);
@@ -13,13 +14,26 @@ function App() {
   const [newSticker, setNewSticker] = useState(undefined);
   const [stickers, setStickers] = useState([]);
 
+  // on page load, get today's date
   useEffect(() => {
-    setSelectedDate(new Date());
+    const today = new Date();
+    setSelectedDate(today);
   }, []);
 
-  useEffect(() => {
-    console.log("selectedDate", selectedDate);
+  // on selectedDate change, get stickers from selected date
+  useEffect(async () => {
+    if (selectedDate) {
+      const date = selectedDate.toLocaleDateString();
+      const notesOnDate = await getOnDate(date);
+      setStickers(notesOnDate);
+
+      console.log(`Notes on ${selectedDate}`, notesOnDate);
+    }
   }, [selectedDate]);
+
+  useEffect(() => {
+    console.log("stickers", stickers);
+  }, [stickers]);
 
   useEffect(() => {
     if (showCalender || showNew) {
@@ -52,18 +66,14 @@ function App() {
         />
       </Overlay>
       <Overlay showModel={showNew} setShowModel={setShowNew}>
-        <AddNew setNewSticker={setNewSticker} />
+        <AddNew setNewSticker={setNewSticker} date={selectedDate} />
       </Overlay>
       <Nav setShowCalender={setShowCalender} setShowNew={setShowNew} />
       <ul className="sticky_notes">
         {stickers.length > 0 &&
           stickers.map((sticker) => (
-            <li key={sticker.createdOn}>
-              <StikyNote
-                title={sticker.title}
-                paragraph={sticker.paragraph}
-                color={sticker.color}
-              />
+            <li key={sticker.id ?? sticker.datetime}>
+              <StikyNote props={sticker} setStickers={setStickers} />
             </li>
           ))}
       </ul>

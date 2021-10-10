@@ -10,7 +10,7 @@ export default function Footer() {
         <div>
           <a
             id="profile-link"
-            href="https://github.com/wwren/Tennis-Courts-Lookup"
+            href="https://github.com/wwren/Sticky-Notes"
             target="_blank"
             rel="noreferrer"
           >

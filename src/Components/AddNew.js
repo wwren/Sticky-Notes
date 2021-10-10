@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react/cjs/react.development";
 import "./AddNew.css";
 
-const AddNew = ({ setNewSticker }) => {
+const AddNew = ({ setNewSticker, date }) => {
   const [title, setTitle] = useState("");
   const [paragraph, setParagraph] = useState("");
   const [color, setColor] = useState("yellow");
@@ -28,7 +28,8 @@ const AddNew = ({ setNewSticker }) => {
       title: title,
       paragraph: paragraph,
       color: color,
-      createdOn: new Date().toISOString(),
+      date: date?.toLocaleDateString() ?? new Date().toLocaleDateString(),
+      datetime: date?.toISOString() ?? new Date().toISOString(),
     });
 
     // clear out form
@@ -77,7 +78,7 @@ const AddNew = ({ setNewSticker }) => {
     <form onSubmit={handleSubmit}>
       <h2>New Sticker</h2>
       <div className="form-group">
-        <label for="title">Title</label>
+        <label htmlFor="title">Title</label>
         <input
           name="title"
           type="text"
@@ -90,7 +91,7 @@ const AddNew = ({ setNewSticker }) => {
       </div>
       <br />
       <div className="form-group">
-        <label for="details">Details</label>
+        <label htmlFor="details">Details</label>
         <textarea
           name="paragraph"
           value={paragraph}
@@ -101,7 +102,7 @@ const AddNew = ({ setNewSticker }) => {
         )}
       </div>
       <div className="form-group">
-        <label for="color">Color</label>
+        <label htmlFor="color">Color</label>
         <select
           name="color"
           value={color}
