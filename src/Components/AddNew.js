@@ -1,7 +1,8 @@
-import React from "react";
-import { useEffect, useState } from "react/cjs/react.development";
+import React, { useEffect, useState } from "react";
 import "./AddNew.css";
 
+const TITLE_ERROR = "Title cannot be empty";
+const PARAGRAPH_ERROR = "Paragraph cannot be empty";
 const AddNew = ({ setNewSticker, date }) => {
   const [title, setTitle] = useState("");
   const [paragraph, setParagraph] = useState("");
@@ -12,13 +13,13 @@ const AddNew = ({ setNewSticker, date }) => {
     e.preventDefault();
     if (title.trim() === "" || paragraph.trim() === "") {
       if (title.trim() === "") {
-        setErrors((prev) => ({ ...prev, title: "Title cannot be empty" }));
+        setErrors((prev) => ({ ...prev, title: TITLE_ERROR }));
       }
 
       if (paragraph.trim() === "") {
         setErrors((prev) => ({
           ...prev,
-          paragraph: "Paragraph cannot be empty",
+          paragraph: PARAGRAPH_ERROR,
         }));
       }
       return;
@@ -32,7 +33,7 @@ const AddNew = ({ setNewSticker, date }) => {
       datetime: date?.toISOString() ?? new Date().toISOString(),
     });
 
-    // clear out form
+    // reset form
     setTitle("");
     setParagraph("");
     setColor("yellow");
@@ -41,11 +42,13 @@ const AddNew = ({ setNewSticker, date }) => {
       'url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6VS1TxxN3M1GoOndTyfIGYYZJpf40Zv-hdg&usqp=CAU")';
   };
 
-  useEffect(() => {
-    if (errors) {
-      setErrors({});
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (errors) {
+  //     setTimeout(() => {
+  //       setErrors({});
+  //     }, 5000);
+  //   }
+  // }, [errors]);
 
   const handleColorChange = (e) => {
     setColor(e.target.value);
@@ -74,6 +77,31 @@ const AddNew = ({ setNewSticker, date }) => {
     document.querySelector("select").style.backgroundImage = `url(${colorUrl})`;
   };
 
+  const handleChange = (e) => {
+    let tagName = e.target.getAttribute("name");
+    if (tagName === "title") {
+      if (e.target.value.trim()) {
+        setErrors((prev) => ({ ...prev, title: "" }));
+      } else {
+        setErrors((prev) => ({ ...prev, title: TITLE_ERROR }));
+      }
+      setTitle(e.target.value);
+    } else if (tagName === "paragraph") {
+      if (e.target.value.trim()) {
+        setErrors((prev) => ({
+          ...prev,
+          paragraph: "",
+        }));
+      } else {
+        setErrors((prev) => ({
+          ...prev,
+          paragraph: PARAGRAPH_ERROR,
+        }));
+      }
+      setParagraph(e.target.value);
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <h2>New Sticker</h2>
@@ -83,7 +111,7 @@ const AddNew = ({ setNewSticker, date }) => {
           name="title"
           type="text"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={(e) => handleChange(e)}
         />
         {errors["title"] && (
           <div style={{ color: "red" }}>{errors["title"]}</div>
@@ -95,7 +123,7 @@ const AddNew = ({ setNewSticker, date }) => {
         <textarea
           name="paragraph"
           value={paragraph}
-          onChange={(e) => setParagraph(e.target.value)}
+          onChange={(e) => handleChange(e)}
         />
         {errors["paragraph"] && (
           <div style={{ color: "red" }}>{errors["paragraph"]}</div>

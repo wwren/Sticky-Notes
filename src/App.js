@@ -14,21 +14,27 @@ function App() {
   const [newSticker, setNewSticker] = useState(undefined);
   const [stickers, setStickers] = useState([]);
 
-  // on page load, get today's date
+  // on page load, get all stickers
   useEffect(() => {
-    const today = new Date();
-    setSelectedDate(today);
+    async function fetchAllNotes() {
+      const allNotes = await getOnDate("*");
+      setStickers(allNotes);
+    }
+    fetchAllNotes();
   }, []);
 
   // on selectedDate change, get stickers from selected date
-  useEffect(async () => {
-    if (selectedDate) {
-      const date = selectedDate.toLocaleDateString();
-      const notesOnDate = await getOnDate(date);
-      setStickers(notesOnDate);
+  useEffect(() => {
+    async function fetchNotesOnDate() {
+      if (selectedDate) {
+        const date = selectedDate.toLocaleDateString();
+        const notesOnDate = await getOnDate(date);
+        setStickers(notesOnDate);
 
-      console.log(`Notes on ${selectedDate}`, notesOnDate);
+        console.log(`Notes on ${selectedDate}`, notesOnDate);
+      }
     }
+    fetchNotesOnDate();
   }, [selectedDate]);
 
   useEffect(() => {
@@ -55,7 +61,7 @@ function App() {
 
       console.log("stickers", stickers);
     }
-  }, [newSticker]);
+  }, [newSticker, stickers]);
 
   return (
     <>

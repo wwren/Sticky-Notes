@@ -20,6 +20,7 @@ ul.sticky_notes li {
 }
 
 .sticky_note {
+  display: block;
   width: 20vw;
   height: 30vh;
   min-width: 140px;
