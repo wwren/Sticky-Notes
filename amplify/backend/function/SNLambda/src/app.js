@@ -103,6 +103,10 @@ app.put(path, function (req, res) {
 app.delete(path, function (req, res) {
   console.log("delete req body", req.body);
 
+  if (req.body.id === "1" || req.body.id === "2") {
+    res.json({ error: "Cannot Delete Root Items", url: req.url });
+  }
+
   let removeItemParams = {
     TableName: tableName,
     Key: { id: req.body.id },
@@ -120,53 +124,4 @@ app.listen(3000, function () {
   console.log("App started");
 });
 
-// app.delete(path + "/object" + hashKeyPath + sortKeyPath, function (req, res) {
-//   var params = {};
-//   if (userIdPresent && req.apiGateway) {
-//     params[partitionKeyName] =
-//       req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
-//   } else {
-//     params[partitionKeyName] = req.params[partitionKeyName];
-//     try {
-//       params[partitionKeyName] = convertUrlType(
-//         req.params[partitionKeyName],
-//         partitionKeyType
-//       );
-//     } catch (err) {
-//       res.statusCode = 500;
-//       res.json({ error: "Wrong column type " + err });
-//     }
-//   }
-//   if (hasSortKey) {
-//     try {
-//       params[sortKeyName] = convertUrlType(
-//         req.params[sortKeyName],
-//         sortKeyType
-//       );
-//     } catch (err) {
-//       res.statusCode = 500;
-//       res.json({ error: "Wrong column type " + err });
-//     }
-//   }
-
-//   let removeItemParams = {
-//     TableName: tableName,
-//     Key: params,
-//   };
-//   dynamodb.delete(removeItemParams, (err, data) => {
-//     if (err) {
-//       res.statusCode = 500;
-//       res.json({ error: err, url: req.url });
-//     } else {
-//       res.json({ url: req.url, data: data });
-//     }
-//   });
-// });
-// app.listen(3000, function () {
-//   console.log("App started");
-// });
-
-// Export the app object. When executing the application local this does nothing. However,
-// to port it to AWS Lambda we will create a wrapper around that will load the app from
-// this file
 module.exports = app;

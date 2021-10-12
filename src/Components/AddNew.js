@@ -104,7 +104,7 @@ const AddNew = ({ setNewSticker, date }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>New Sticker</h2>
+      <h2>New Sticky Note</h2>
       <div className="form-group">
         <label htmlFor="title">Title</label>
         <input

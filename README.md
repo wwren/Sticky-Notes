@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# Sticky Notes :ledger:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## ![Project Image](./stickynotes.png)
 
-## Available Scripts
+### Table of Contents
 
-In the project directory, you can run:
+- [Description](#description)
+- [Obstacles](#obstacles)
+- [Technologies](#technologies)
+- [License](#license)
+- [Author Info](#author-info)
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Description
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Sticky Notes is a web application that enable users to take notes, save (delete) notes to (from) database, view notes that were created and saved in the past.
 
-### `npm test`
+Key features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. 'Add New' to add new stickers
+2. 'View History' to select a date from calender not later than today to view the sticky notes created and saved in the past
+3. Each sticky notes are directly editable. Users do not need to delete and create new sticky note if wish to make changes.
+4. 'Save' to save to database
+5. 'Delete' to delete from the board and also delete from database (if saved there)
 
-### `npm run build`
+The app can be accessed at the link below.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> https://www.ranwwren.net/
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Obstacles
 
-### `npm run eject`
+Making each sticky note directly editable and manage the state changes were bit of a challenge. I initially allowed setState on the input event. However, since each state change will trigger component update, the cursor returns back to the beginning.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Solution: On the input event, setState of the message object that is changing. OnBlur event, setState of sticky notes object.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Technologies
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Frontend: React.js, JavaScript, HTML & CSS
+- Backend: Node.js
+- Cloud: AWS Amplify, API Gateway, Lambda, DynamoDB
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## License
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+MIT License
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Get in touch
 
-### Analyzing the Bundle Size
+<div>
+  <a href="https://www.instagram.com/ranwren/">
+    <div>@ranwren</div>
+    <img src="https://raw.githubusercontent.com/MikeCodesDotNET/MikeCodesDotNET/a8abbf37441f3253f74ea255a47f289208d7568c/Resources/instagram.svg" alt="Instagram" style="vertical-align:top; margin:4px">
+  </a>
+<a href="https://www.linkedin.com/in/ding-ran/">
+  <div>@Ran Ding</div>
+    <img src="https://raw.githubusercontent.com/MikeCodesDotNET/MikeCodesDotNET/a8abbf37441f3253f74ea255a47f289208d7568c/Resources/linkedIn.svg" alt="LinkedIn" style="vertical-align:top; margin:4px">
+  </a>
+</div>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[Back To The Top](#)

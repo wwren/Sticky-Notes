@@ -28,6 +28,10 @@ const StikyNote = ({ props, setStickers }) => {
 
   const handleDelete = async () => {
     // delete from database and state
+    if (id === "1" || id === "2") {
+      alert.show("Cannot Delete Root Items", { type: "error" });
+      return;
+    }
     if (id) {
       setStickers((prev) => prev.filter((ele) => ele.id !== id));
       const res = await deleteSticker(id);

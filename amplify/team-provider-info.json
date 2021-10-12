@@ -15,7 +15,7 @@
       "function": {
         "SNLambda": {
           "deploymentBucketName": "amplify-stickynote-dev-133631-deployment",
-          "s3Key": "amplify-builds/SNLambda-46706f4874384766664f-build.zip"
+          "s3Key": "amplify-builds/SNLambda-48786543437379514b42-build.zip"
         }
       }
     }
