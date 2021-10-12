@@ -1,0 +1,5 @@
+{
+    "tableName": "SNTable",
+    "partitionKeyName": "id",
+    "partitionKeyType": "S"
+}

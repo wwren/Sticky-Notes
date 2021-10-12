@@ -1,0 +1,35 @@
+{
+  "paths": [
+    {
+      "name": "/notes",
+      "lambdaFunction": "SNLambda",
+      "privacy": {
+        "open": true
+      },
+      "policyResourceName": "/notes"
+    }
+  ],
+  "resourceName": "SNAPI",
+  "apiName": "SNAPI",
+  "functionArns": [
+    {
+      "lambdaFunction": "SNLambda"
+    }
+  ],
+  "privacy": {
+    "auth": 0,
+    "unauth": 0,
+    "authRoleName": "amplify-stickynote-dev-133631-authRole",
+    "unAuthRoleName": "amplify-stickynote-dev-133631-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "SNLambda",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}
