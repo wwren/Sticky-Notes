@@ -18,9 +18,9 @@ Sticky Notes is a web application that enable users to take notes, save (delete)
 
 Key features
 
-1. 'Add New' to add new stickers
-2. 'View History' to select a date from calender not later than today to view the sticky notes created and saved in the past
-3. Each sticky notes are directly editable. Users do not need to delete and create new sticky note if wish to make changes.
+1. 'Add New' to add new sticky notes
+2. 'View History' to select a date from calender no later than today to view the sticky notes created and saved in the past
+3. Each sticky note is directly editable by double clicking title and paragraph section
 4. 'Save' to save to database
 5. 'Delete' to delete from the board and also delete from database (if saved there)
 
