@@ -32,7 +32,7 @@ The app can be accessed at the link below.
 
 ## Obstacles
 
-Making each sticky note directly editable and manage the state changes were bit of a challenge. I initially allowed setState on the input event. However, since each state change will trigger component update, the cursor returns back to the beginning.
+Making each sticky note directly editable and managing the state changes were bit of a challenge. I initially allowed setState on the input event. However, since each state change will trigger component update, the cursor returns back to the beginning.
 
 Solution: On the input event, setState of the message object that is changing. OnBlur event, setState of sticky notes object.
 
