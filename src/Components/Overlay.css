@@ -21,13 +21,14 @@
   top: 10px;
 }
 
-@media screen and (min-width: 768px) {
-  .overlay button.close {
-    right: 10px;
-  }
-}
-
 .overlay svg {
   width: 40px;
   height: 40px;
+}
+
+@media screen and (min-width: 768px) {
+  .overlay button.close {
+    left: 95%;
+    transform: translateX(-20px);
+  }
 }

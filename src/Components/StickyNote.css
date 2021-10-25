@@ -14,12 +14,6 @@ ul.sticky_notes {
   width: 90vw;
 }
 
-@media screen and (min-width: 414px) {
-  ul.sticky_notes {
-    margin-top: 100px;
-  }
-}
-
 ul.sticky_notes li {
   list-style: none;
   margin-bottom: 25px;
@@ -27,8 +21,8 @@ ul.sticky_notes li {
 
 .sticky_note {
   display: block;
-  width: 20vw;
-  height: 30vh;
+  width: 45vw;
+  height: 45vh;
   max-width: 350px;
   max-height: 300px;
   min-width: 140px;
@@ -83,4 +77,18 @@ ul.sticky_note li:nth-child(3n + 1) {
 .sticky_note a {
   cursor: pointer;
   text-decoration: none;
+}
+
+@media screen and (min-width: 414px) {
+  ul.sticky_notes {
+    margin-top: 100px;
+  }
+}
+
+@media screen and (min-width: 1070px) {
+  .sticky_note {
+    display: block;
+    width: 20vw;
+    height: 30vh;
+  }
 }

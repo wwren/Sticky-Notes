@@ -11,6 +11,11 @@ const StikyNote = ({ props, setStickers }) => {
 
   const handleSave = async (e) => {
     const stickerCopy = { ...props };
+    // protect the sample notes
+    if (stickerCopy.id === "1" || stickerCopy.id === "2") {
+      alert.show("Not Allow to Modify Root Items", { type: "error" });
+      return;
+    }
     const res = await putNewSticker(stickerCopy);
     if (res.success) {
       alert.show("Added to Memory!", { type: "success" });
