@@ -42,14 +42,6 @@ const AddNew = ({ setNewSticker, date }) => {
       'url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6VS1TxxN3M1GoOndTyfIGYYZJpf40Zv-hdg&usqp=CAU")';
   };
 
-  // useEffect(() => {
-  //   if (errors) {
-  //     setTimeout(() => {
-  //       setErrors({});
-  //     }, 5000);
-  //   }
-  // }, [errors]);
-
   const handleColorChange = (e) => {
     setColor(e.target.value);
 

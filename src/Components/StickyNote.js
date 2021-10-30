@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./StickyNote.css";
 import { putNewSticker, deleteSticker } from "../APIs.js";
 import { useAlert } from "react-alert";
 
 const StikyNote = ({ props, setStickers }) => {
-  const { title, paragraph, color, date, datetime, id } = props;
+  const { title, paragraph, color, datetime, id } = props;
   const [stickerMessage, setStickerMessage] = useState(undefined);
+  const currStickerRef = useRef();
 
   const alert = useAlert();
 
@@ -52,7 +53,7 @@ const StikyNote = ({ props, setStickers }) => {
   };
 
   const handleInput = (e) => {
-    let stickerId = e.target.parentElement.getAttribute("id");
+    let stickerId = currStickerRef.current.getAttribute("id");
     let tagName = e.target.tagName;
     let data = e.target.innerText;
 
@@ -77,7 +78,11 @@ const StikyNote = ({ props, setStickers }) => {
   };
 
   return (
-    <a className={`sticky_note ${color}`} id={id ?? datetime}>
+    <a
+      className={`sticky_note ${color}`}
+      id={id ?? datetime}
+      ref={currStickerRef}
+    >
       <h2
         contentEditable="true"
         onInput={(e) => handleInput(e)}
