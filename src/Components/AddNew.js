@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./AddNew.css";
 
 const TITLE_ERROR = "Title cannot be empty";
@@ -8,6 +8,19 @@ const AddNew = ({ setNewSticker, date }) => {
   const [paragraph, setParagraph] = useState("");
   const [color, setColor] = useState("yellow");
   const [errors, setErrors] = useState({});
+
+  const titleRef = useRef(null);
+
+  useEffect(() => {
+    let mounted = true;
+    console.log(titleRef.current);
+    if (mounted) {
+      titleRef.current.focus();
+    }
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -104,6 +117,7 @@ const AddNew = ({ setNewSticker, date }) => {
           type="text"
           value={title}
           onChange={(e) => handleChange(e)}
+          ref={titleRef}
         />
         {errors["title"] && (
           <div style={{ color: "red" }}>{errors["title"]}</div>

@@ -3,10 +3,7 @@ import "./Overlay.css";
 
 const Overlay = (props) => {
   return (
-    <div
-      className="overlay"
-      style={props.showModel ? { display: "block" } : { display: "none" }}
-    >
+    <div className="overlay">
       <button className="close" onClick={() => props.setShowModel(false)}>
         <span
           className="iconify"

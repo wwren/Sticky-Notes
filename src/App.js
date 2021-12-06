@@ -65,15 +65,19 @@ function App() {
 
   return (
     <>
-      <Overlay showModel={showCalender} setShowModel={setShowCalender}>
-        <MyCalender
-          selectedDate={selectedDate}
-          setSelectedDate={setSelectedDate}
-        />
-      </Overlay>
-      <Overlay showModel={showNew} setShowModel={setShowNew}>
-        <AddNew setNewSticker={setNewSticker} date={selectedDate} />
-      </Overlay>
+      {showCalender && (
+        <Overlay setShowModel={setShowCalender}>
+          <MyCalender
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+          />
+        </Overlay>
+      )}
+      {showNew && (
+        <Overlay showModel={showNew} setShowModel={setShowNew}>
+          <AddNew setNewSticker={setNewSticker} date={selectedDate} />
+        </Overlay>
+      )}
       <Nav setShowCalender={setShowCalender} setShowNew={setShowNew} />
       <ul className="sticky_notes">
         {stickers.length > 0 &&
